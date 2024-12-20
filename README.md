@@ -1,4 +1,164 @@
 
+
+
+
+
+
+
+
+
+
+
+## 1. Create a New User
+ - To add a new user examuser:
+```yml
+adduser examuser
+```
+
+
+
+## 2. Editing the Configuration File (slurm.conf)
+ - To configure Slurm, you attempted to edit the slurm.conf file:
+```yml
+nano slurm.conf
+
+# Make changes as necessary in this file for your Slurm setup.
+```
+
+## 3. Navigating and Working with Scripts
+ - Navigated to the build directory:
+
+```yml
+cd build/
+
+# Then, edited the newscript.sh file:
+
+nano newscript.sh
+
+```
+
+## 4. Copy Configuration to System Directories
+ - After configuring slurm.conf, it was copied to /etc/slurm and /etc/slurm-llnl/: and other Compute Nodes.
+
+```yml
+cp slurm.conf /etc/slurm
+cp slurm.conf /etc/slurm-llnl/
+```
+
+
+## 5. Restarting Slurm Services
+ - After editing the configuration, the Slurm services were restarted:
+```yml
+
+systemctl restart slurmd
+systemctl restart slurmdbd
+systemctl restart slurmctld
+
+```
+
+## 6. Check Job Queues and Partitions
+ - To check the job queue and partitions:
+```yml
+squeue
+```
+
+
+
+## 7. Create Account and User in sacctmgr
+ - Create an account for examuser:
+
+```yml
+sacctmgr add account examuser --immediate
+```
+ ### Create the user:
+
+```yml
+sacctmgr create user examuser defaultaccount=examuser --immediate
+```
+
+## 8. Create QoS for the User
+ - Create QoS (Quality of Service) for examuser:
+
+``` yml
+sacctmgr create qos examuser
+```
+ ### Set priority for examuser:
+
+```yml
+sacctmgr modify qos examuser set priority=12
+```
+
+
+## 9 . Modify User Settings (MaxJobs)
+ - To modify the MaxJobs limit for the user examuser:
+
+```yml
+sudo sacctmgr modify user examuser set MaxJobs=2
+```
+
+
+
+## 10. Check QoS Settings
+ - To verify the QoS settings:
+```yml
+sacctmgr show qos format=name,priority,MaxJobs
+```
+
+## 11. Submitting Jobs as examuser
+Log in as examuser:
+```yml
+su - examuser
+```
+ ### Then submit jobs using:
+```yml
+sbatch newscript.sh
+```
+
+ ### Check job status:
+```yml
+squeue
+```
+
+## 12. MaxJobs Exceeded (QoS Limit)
+ - If the user exceeds the MaxJobs limit, the job will be queued with the following message:
+```yml
+squeue
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+
+<br>
+<br>
+
+# ------------------ Implementation Screnchots----------------------
+
+
+
+
 ## 1. Create a New User
 
 <br>
