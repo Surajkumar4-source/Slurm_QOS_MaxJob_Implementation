@@ -154,7 +154,7 @@ squeue
 <br>
 <br>
 
-# ------------------ Implementation Screnchots----------------------
+# ------------------ Implementation Screnchots-------------
 
 
 
